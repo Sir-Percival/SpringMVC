@@ -1,0 +1,12 @@
+html {
+    background-color: #121212;
+    text-align: center;
+}
+
+p {
+    color: whitesmoke;
+    font-family: "VT323", monospace;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 4rem;
+}
