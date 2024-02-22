@@ -61,6 +61,15 @@ label {
     font-size: 1.5rem;
 }
 
-.radio-options {
+.inline-options {
     display: inline;
+}
+
+ul {
+    list-style: inside square;
+}
+
+li {
+    font-size: 3rem;
+    margin-top: 1rem;
 }
