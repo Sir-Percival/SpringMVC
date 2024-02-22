@@ -16,14 +16,13 @@ p {
 
 input {
     border: none;
+    margin-top: 1rem;
 }
 
 input[type="text"] {
     text-align: center;
     background-color: #212529;
     font-size: 2rem;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
     border-style: solid;
