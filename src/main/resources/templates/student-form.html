@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,6 +18,14 @@
   <select th:field="*{country}">
     <option th:each="country : ${countries}" th:value="${country}" th:text="${country}"/>
   </select>
+  <br/>
+  <fieldset>
+    <legend>Select your favourite programming language:</legend>
+      <div th:each="language : ${languages}" class="radio-options">
+        <input type="radio" th:field="*{favouriteLanguage}" th:id="${language}" th:value="${language}" name="language"/>
+        <label th:for="${language}" th:text="${language}"/>
+      </div>
+  </fieldset>
   <br/>
   <input type="submit">
 </form>
