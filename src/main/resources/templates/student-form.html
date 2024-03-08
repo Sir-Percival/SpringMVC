@@ -12,8 +12,10 @@
 <body>
 <form th:action="@{/processStudentForm}" th:object="${student}" method="POST">
   <input type="text" th:field="*{firstName}" placeholder="First name">
+  <div th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" th:class="error"></div>
   <br/>
   <input type="text" th:field="*{lastName}" placeholder="Last name">
+  <div th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}" th:class="error"></div>
   <br/>
   <select th:field="*{country}">
     <option th:each="country : ${countries}" th:value="${country}" th:text="${country}"/>
@@ -25,6 +27,7 @@
         <input type="radio" th:field="*{favouriteLanguage}" th:id="${language}" th:value="${language}" name="language"/>
         <label th:for="${language}" th:text="${language}"/>
       </div>
+    <div th:if="${#fields.hasErrors('favouriteLanguage')}" th:errors="*{favouriteLanguage}" th:class="error"></div>
   </fieldset>
   <br/>
   <fieldset>
@@ -33,6 +36,7 @@
       <input type="checkbox" th:field="*{operatingSystems}" th:id="${system}" th:value="${system}"/>
       <label th:for="${system}" th:text="${system}"/>
     </div>
+    <div th:if="${#fields.hasErrors('operatingSystems')}" th:errors="*{operatingSystems}" th:class="error"></div>
   </fieldset>
   <br/>
   <input type="submit">

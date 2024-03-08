@@ -1,13 +1,23 @@
 package com.example.springmvc.model;
 
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+
 import java.util.List;
 
 public class Student
 {
+    @NotNull(message = "Required")
+    @Size(min = 1, message = "Cannot be empty")
     private String firstName;
+    @NotNull(message = "Required")
+    @Size(min = 1, message = "Cannot be empty")
     private String lastName;
     private String country;
+    @NotNull(message = "Select one")
     private String favouriteLanguage;
+    @NotEmpty(message = "Select at least one")
     private List<String> operatingSystems;
 
     public Student() {

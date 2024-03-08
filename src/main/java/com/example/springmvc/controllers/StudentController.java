@@ -1,10 +1,15 @@
 package com.example.springmvc.controllers;
 
 import com.example.springmvc.model.Student;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -22,6 +27,13 @@ public class StudentController
     @Value("${systems}")
     private List<String> systems;
 
+    @InitBinder
+    public void initBinder(WebDataBinder dataBinder)
+    {
+        StringTrimmerEditor stringTrimmerEditor = new StringTrimmerEditor(true);
+        dataBinder.registerCustomEditor(String.class, stringTrimmerEditor);
+    }
+
     @GetMapping("/showStudentForm")
     public String showForm(Model model)
     {
@@ -33,9 +45,18 @@ public class StudentController
     }
 
     @PostMapping("/processStudentForm")
-    public String processForm(@ModelAttribute("student") Student student)
+    public String processForm(@Valid @ModelAttribute("student") Student student, BindingResult bindingResult, Model model)
     {
-        System.out.println(student.getFirstName() + " " + student.getLastName());
-        return "student-confirm";
+        if(bindingResult.hasErrors())
+        {
+            model.addAttribute("countries", countries);
+            model.addAttribute("languages", languages);
+            model.addAttribute("systems", systems);
+            return "student-form";
+        }
+        else
+        {
+            return "student-confirm";
+        }
     }
 }
