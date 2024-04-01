@@ -17,6 +17,9 @@
   <input type="text" th:field="*{lastName}" placeholder="Last name">
   <div th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}" th:class="error"></div>
   <br/>
+  <input type="text" th:field="*{age}" placeholder="Age"/>
+  <div th:if="${#fields.hasErrors('age')}" th:errors="*{age}" th:class="error"></div>
+  <br/>
   <select th:field="*{country}">
     <option th:each="country : ${countries}" th:value="${country}" th:text="${country}"/>
   </select>

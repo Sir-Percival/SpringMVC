@@ -1,8 +1,6 @@
 package com.example.springmvc.model;
 
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.*;
 
 import java.util.List;
 
@@ -19,6 +17,10 @@ public class Student
     private String favouriteLanguage;
     @NotEmpty(message = "Select at least one")
     private List<String> operatingSystems;
+    @NotNull(message = "Required")
+    @Min(value = 18, message = "We only accept students aged 18 to 50")
+    @Max(value = 50, message = "We only accept students aged 18 to 50")
+    private Integer age;
 
     public Student() {
     }
@@ -61,5 +63,13 @@ public class Student
 
     public void setOperatingSystems(List<String> operatingSystems) {
         this.operatingSystems = operatingSystems;
+    }
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
     }
 }

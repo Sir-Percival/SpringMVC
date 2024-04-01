@@ -10,7 +10,7 @@
   <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
-<p th:text = "'Hello and welcome ' + ${student.firstName} + ' ' + ${student.lastName} + ' from ' + ${student.country}"/>
+<p th:text = "'Hello and welcome ' + ${student.firstName} + ' ' + ${student.lastName} + ' (' + ${student.age} + ')' + ' from ' + ${student.country}"/>
 <p th:text="'Another ' + ${student.favouriteLanguage} + ' enjoyer :)'"/>
 <p>So I think you must be using:</p>
 <ul>
