@@ -1,5 +1,6 @@
 package com.example.springmvc.model;
 
+import com.example.springmvc.validation.CourseCode;
 import jakarta.validation.constraints.*;
 
 import java.util.List;
@@ -21,6 +22,8 @@ public class Student
     @Min(value = 18, message = "We only accept students aged 18 to 50")
     @Max(value = 50, message = "We only accept students aged 18 to 50")
     private Integer age;
+    @CourseCode
+    private String courseCode;
 
     public Student() {
     }
@@ -71,5 +74,13 @@ public class Student
 
     public void setAge(Integer age) {
         this.age = age;
+    }
+
+    public String getCourseCode() {
+        return courseCode;
+    }
+
+    public void setCourseCode(String courseCode) {
+        this.courseCode = courseCode;
     }
 }
